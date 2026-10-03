@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+    VIRACHAVE — página de cadastro
+    IMPORTANTE:
+    - Todos os cursos/opções do código original foram preservados.
+    - O número de WhatsApp foi preservado.
+    - O formulário continua enviando para o mesmo WhatsApp.
+    - O nome "ViraChave" é provisório e pode ser trocado no título/variável BRAND_NAME.
+  -->
+
+  <title>ViraChave | Uma oportunidade pode mudar tudo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --navy: #071a3d;
+      --navy-2: #0d2858;
+      --purple: #6424ff;
+      --purple-2: #8b5cf6;
+      --cyan: #00cfff;
+      --yellow: #ffd600;
+      --orange: #ff8a00;
+      --pink: #ff2f73;
+      --red: #ff1744;
+      --white: #ffffff;
+      --text: #14213d;
+      --muted: #64748b;
+      --line: #e6eaf1;
+      --surface: #f7f9fd;
+      --success: #0f9f6e;
+      --shadow: 0 24px 70px rgba(7, 26, 61, .14);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(0,207,255,.13), transparent 28%),
+        radial-gradient(circle at 85% 8%, rgba(100,36,255,.12), transparent 30%),
+        var(--surface);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button,
+    select {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 88% 20%, rgba(0,207,255,.42), transparent 23%),
+        radial-gradient(circle at 12% 0%, rgba(255,214,0,.25), transparent 25%),
+        linear-gradient(135deg, #061633 0%, #102b61 42%, #4d20c7 100%);
+      padding: 28px 20px 110px;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(.2px);
+      z-index: -1;
+    }
+
+    .hero::before {
+      width: 430px;
+      height: 120px;
+      right: -120px;
+      top: 100px;
+      transform: rotate(-22deg);
+      background: linear-gradient(90deg, transparent, rgba(0,207,255,.25));
+    }
+
+    .hero::after {
+      width: 330px;
+      height: 90px;
+      left: -120px;
+      bottom: 40px;
+      transform: rotate(18deg);
+      background: linear-gradient(90deg, rgba(255,214,0,.18), transparent);
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: 25px;
+    }
+
+    .brand-mark {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--navy);
+      background: linear-gradient(135deg, var(--yellow), var(--cyan));
+      font-weight: 900;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 0 auto 18px;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.03;
+      letter-spacing: -1.7px;
+      font-weight: 800;
+    }
+
+    .hero h1 .highlight {
+      color: var(--yellow);
+      text-shadow: 0 0 30px rgba(255,214,0,.18);
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.88);
+      font-size: clamp(15px, 2.2vw, 19px);
+      line-height: 1.65;
+    }
+
+    .hero-subtitle strong {
+      color: var(--yellow);
+    }
+
+    .urgencia-wrap {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .urgencia {
+      margin: 0;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.17);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .urgencia.destaque {
+      color: #171717;
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    /* =========================
+       BENEFÍCIOS
+    ========================= */
+
+    .benefits {
+      width: min(1050px, calc(100% - 32px));
+      margin: -65px auto 0;
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .benefit {
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 20px;
+      padding: 20px 14px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 10px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      font-size: 22px;
+      background: linear-gradient(135deg, rgba(100,36,255,.12), rgba(0,207,255,.15));
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .benefit span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    /* =========================
+       CONTAINER / FORM
+    ========================= */
+
+    .container {
+      width: min(900px, calc(100% - 32px));
+      margin: 34px auto 70px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .info-box {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 45px rgba(7,26,61,.08);
+    }
+
+    .info-title {
+      margin: 0 0 12px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .info-item {
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8faff;
+      border: 1px solid #edf1f8;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .info-item::first-letter {
+      color: var(--purple);
+    }
+
+    form {
+      position: relative;
+      background: rgba(255,255,255,.98);
+      padding: clamp(20px, 4vw, 34px);
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    form::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--purple), var(--cyan), var(--yellow), var(--orange));
+    }
+
+    .form-head {
+      margin-bottom: 22px;
+    }
+
+    .form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: #f0ebff;
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    .form-head h2 {
+      margin: 0 0 7px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -.7px;
+    }
+
+    .form-head h2 span {
+      color: var(--purple);
+    }
+
+    .form-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .trust-item {
+      padding: 12px;
+      border-radius: 14px;
+      background: #fff7e1;
+      border: 1px solid #ffe8a0;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: #9a6800;
+      margin-bottom: 3px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      display: block;
+      margin: 0 0 6px 3px;
+      color: #34435d;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    input,
+    select {
+      display: block;
+      width: 100%;
+      min-height: 50px;
+      padding: 13px 14px;
+      margin: 0;
+      border-radius: 13px;
+      border: 1px solid #dbe1eb;
+      outline: none;
+      color: var(--text);
+      background: #fff;
+      font-size: 13px;
+      transition: .2s ease;
+    }
+
+    input::placeholder {
+      color: #9aa5b5;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px rgba(100,36,255,.09);
+    }
+
+    select:disabled {
+      background: #f4f6fa;
+      color: #9aa5b5;
+      cursor: not-allowed;
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 58px;
+      padding: 14px 18px;
+      margin-top: 18px;
+      border: 0;
+      border-radius: 16px;
+      color: #101010;
+      background: linear-gradient(90deg, #ff2f73 0%, #ff5c35 42%, #ffd600 100%);
+      box-shadow: 0 12px 28px rgba(255,47,115,.22);
+      font-weight: 800;
+      font-size: 15px;
+      transition: .2s ease;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(255,47,115,.28);
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+    }
+
+    .secure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin: 12px 0 0;
+      color: #718096;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    /* =========================
+       COMO FUNCIONA
+    ========================= */
+
+    .how {
+      margin-top: 24px;
+      padding: 28px;
+      border-radius: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), #152e61);
+      box-shadow: var(--shadow);
+    }
+
+    .how h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+    }
+
+    .how > p {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius: 17px;
+    }
+
+    .step-number {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: #111;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .step span {
+      color: rgba(255,255,255,.7);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 28px 20px 35px;
+      text-align: center;
+      color: #6d7890;
+      font-size: 10px;
+    }
+
+    footer strong {
+      color: var(--navy);
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(3, 10, 26, .82);
+      backdrop-filter: blur(7px);
+      z-index: 99999;
+      opacity: 1;
+      visibility: visible;
+      transition: .2s ease;
+    }
+
+    .modal.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .modal-box {
+      position: relative;
+      width: min(600px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: clamp(20px, 4vw, 32px);
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 30px 100px rgba(0,0,0,.4);
+      border: 1px solid rgba(255,255,255,.7);
+    }
+
+    .modal-top {
+      text-align: center;
+    }
+
+    .modal-icon {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 10px;
+      border-radius: 18px;
+      background: #fff4cf;
+      font-size: 25px;
+    }
+
+    .modal-box h2 {
+      margin: 0 0 10px;
+      color: #e10032;
+      font-size: clamp(20px, 4vw, 25px);
+    }
+
+    .modal-box p {
+      line-height: 1.55;
+    }
+
+    .modal-intro {
+      margin: 0;
+      color: #34435d;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .modal-destaque {
+      margin: 17px 0;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+      background: linear-gradient(135deg, #f3edff, #e9fbff);
+      border: 1px solid #e0e5ff;
+      font-size: 13px;
+    }
+
+    .modal-destaque p {
+      margin: 0;
+    }
+
+    .modal-destaque strong {
+      color: #e10032;
+    }
+
+    .modal-lista {
+      display: grid;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .modal-lista p {
+      margin: 0;
+      padding: 10px 12px;
+      border-radius: 11px;
+      background: #f7f9fc;
+      font-size: 12px;
+    }
+
+    .modal-alerta {
+      margin: 14px 0;
+      padding: 11px 13px;
+      border-radius: 12px;
+      border-left: 4px solid var(--orange);
+      background: #fff7ed;
+    }
+
+    .modal-alerta p {
+      margin: 0;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .modal-button {
+      width: 100%;
+      min-height: 54px;
+      padding: 13px;
+      border: 0;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(90deg, #ff1744, #ff4b4b);
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(255,23,68,.2);
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================= */
+
+    @media (max-width: 820px) {
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 22px 15px 90px;
+      }
+
+      .brand {
+        font-size: 11px;
+        margin-bottom: 19px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      .urgencia-wrap {
+        gap: 7px;
+      }
+
+      .urgencia {
+        width: 100%;
+        font-size: 10px;
+      }
+
+      .benefits {
+        width: calc(100% - 20px);
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: -48px;
+      }
+
+      .benefit {
+        padding: 15px 9px;
+        border-radius: 16px;
+      }
+
+      .benefit-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 18px;
+      }
+
+      .benefit strong {
+        font-size: 11px;
+      }
+
+      .benefit span {
+        font-size: 9px;
+      }
+
+      .container {
+        width: calc(100% - 20px);
+        margin-top: 22px;
+        margin-bottom: 45px;
+      }
+
+      .info-box {
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .info-title {
+        font-size: 13px;
+      }
+
+      .info-item {
+        font-size: 11px;
+      }
+
+      form {
+        padding: 20px 15px;
+        border-radius: 22px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .trust-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        font-size: 10px;
+      }
+
+      input,
+      select {
+        min-height: 49px;
+        font-size: 12px;
+      }
+
+      .submit-button {
+        min-height: 56px;
+        font-size: 13px;
+      }
+
+      .how {
+        padding: 22px 16px;
+        border-radius: 20px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 38px 1fr;
+        column-gap: 10px;
+        align-items: start;
+      }
+
+      .step-number {
+        grid-row: 1 / span 2;
+        margin: 0;
+      }
+
+      .modal {
+        padding: 10px;
+      }
+
+      .modal-box {
+        border-radius: 20px;
+        padding: 20px 16px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .benefit {
+        min-height: 120px;
+      }
+    }
+
+    /* Reduz animações para usuários que preferem menos movimento */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+    <div class="hero-inner">
+
+      <div class="brand" aria-label="ViraChave">
+        <span class="brand-mark">↗</span>
+        <span>ViraChave • Oportunidades</span>
+      </div>
+
+      <h1>
+        E se a próxima oportunidade
+        <span class="highlight">for a sua?</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Cadastre-se gratuitamente e entre para o nosso
+        <strong>banco de oportunidades</strong>.
+        Por meio de ações e parcerias, participantes cadastrados
+        podem ser selecionados para receber <strong>bolsas e formações gratuitas</strong>.
+      </p>
+
+      <div class="urgencia-wrap">
+        <p class="urgencia destaque">⚡ Vagas limitadas • Cadastro com análise imediata</p>
+        <p class="urgencia">⏱ Você tem até 48 horas após o cadastro para confirmar sua vaga</p>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       BENEFÍCIOS
+  ========================= -->
+
+  <section class="benefits" aria-label="Benefícios">
+    <article class="benefit">
+      <div class="benefit-icon">🎓</div>
+      <strong>Cursos Gratuitos</strong>
+      <span>Diversas áreas e modalidades.</span>
+    </article>
+
+    <article class="benefit">
+      <div class="benefit-icon">🎯</div>
+      <strong>Bolsas de Estudo</strong>
+      <span>Para impulsionar seu futuro.</span>
+    </article>
+
+    <article class="benefit">
+      <div class="benefit-icon">🤝</div>
+      <strong>Parcerias Reais</strong>
+      <span>Ações e oportunidades de formação.</span>
+    </article>
+
+    <article class="benefit">
+      <div class="benefit-icon">🚀</div>
+      <strong>Novas Oportunidades</strong>
+      <span>Mais possibilidades para crescer.</span>
+    </article>
+  </section>
+
+
+  <!-- =========================
+       CONTEÚDO
+  ========================= -->
+
+  <main class="container">
+
+    <section class="info-box">
+      <h2 class="info-title">Por que participar?</h2>
+
+      <div class="info-grid">
+        <div class="info-item">✔ Mais de 2.000 alunos</div>
+        <div class="info-item">✔ Certificado válido</div>
+        <div class="info-item">✔ Presencial ou EAD</div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         FORMULÁRIO
+    ========================= -->
+
+    <form id="cadastroForm" onsubmit="enviarWhatsApp(event)">
+
+      <div class="form-head">
+        <div class="form-badge">🔥 Cadastro rápido</div>
+
+        <h2>
+          Dê o seu <span>próximo passo!</span>
+        </h2>
+
+        <p>
+          Preencha seus dados e entre para o nosso banco de oportunidades.
+          Seu cadastro será encaminhado para análise.
+        </p>
+      </div>
+
+
+      <div class="trust-strip">
+        <div class="trust-item">
+          <strong>🎓 Inclusão educacional</strong>
+          Ação criada para ampliar o acesso à qualificação profissional.
+        </div>
+
+        <div class="trust-item">
+          <strong>⚡ Vagas limitadas</strong>
+          Mais de 2.000 alunos já foram informados/beneficiados pela ação.
+        </div>
+
+        <div class="trust-item">
+          <strong>⏱ Prazo de 48 horas</strong>
+          Após o cadastro, você tem até 48 horas para confirmar sua vaga.
+        </div>
+      </div>
+
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input
+            id="nome"
+            type="text"
+            placeholder="Digite seu nome"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="whatsapp">WhatsApp</label>
+          <input
+            id="whatsapp"
+            type="tel"
+            placeholder="(00) 00000-0000"
+            autocomplete="tel"
+            inputmode="tel"
+            required
+          >
+        </div>
+
+
+        <!-- CURSOS LIVRES — TODOS PRESERVADOS -->
+
+        <div class="field full">
+          <label for="curso">Curso Livre</label>
+
+          <select id="curso" required>
+            <option value="">Selecione um Curso Livre</option>
+
+            <option>ADMINISTRAÇÃO EXPERT</option>
+            <option>ATENDIMENTO AO CLIENTE</option>
+            <option>CAMAREIRA</option>
+            <option>CANVA</option>
+            <option>COZINHA FUNCIONAL</option>
+            <option>SEGURANÇA CIBERNÉTICA</option>
+            <option>DECORAÇÃO DE EVENTOS</option>
+            <option>EXCEL 365</option>
+            <option>EXCEL DESCOMPLICADO</option>
+            <option>FUTURO CAMPEÃO</option>
+            <option>GANHE DINHEIRO COM A ÁREA DA BELEZA</option>
+            <option>GANHE DINHEIRO COM A ÁREA DA CONSTRUÇÃO CIVIL</option>
+            <option>GASTRONOMIA DE MÃO CHEIA</option>
+            <option>GESTÃO DE PESSOAS</option>
+            <option>I SPEAK</option>
+            <option>INFORMÁTICA EXPERIENCE</option>
+            <option>INFORMÁTICA PARA MICROEMPREENDEDOR</option>
+            <option>INTERNET</option>
+            <option>JAVA MOD I</option>
+            <option>MARKETING DIGITAL</option>
+            <option>MARKETING PESSOAL</option>
+            <option>PREPARAÇÃO PROFISSIONAL</option>
+            <option>PRIMEIRO EMPREGO</option>
+            <option>RECEPCIONISTA DE HOTEL</option>
+            <option>SAÚDE MENTAL E BEM-ESTAR EMOCIONAL</option>
+            <option>TIKTOKER</option>
+            <option>MARKETING DIGITAL - EAD</option>
+            <option>DIGITAL INFLUENCER - COMO GERAR CONTEÚDO</option>
+            <option>INTELIGÊNCIA ARTIFICIAL</option>
+            <option>CRIAÇÃO DE ARTES E DESIGN COM IA</option>
+            <option>INTENSIVO BARBEARIA PROFISSIONAL</option>
+            <option>INTENSIVO AUXILIAR DE FARMÁCIA E DROGARIA</option>
+            <option>INTENSIVO EM GESTÃO DE MÍDIAS</option>
+            <option>INTENSIVO AUXILIAR VETERINÁRIO E PETSHOP</option>
+            <option>INTENSIVO CHEF PROFISSIONAL</option>
+            <option>INTENSIVO GESTÃO PESSOAL E PROFISSIONAL</option>
+            <option>INTENSIVO MAQUIAGEM PROFISSIONAL</option>
+            <option>INTENSIVO YOUTUBER</option>
+            <option>MAQUIAGEM: DIURNA E NOTURNA</option>
+            <option>INTENSIVO MARKETING DIGITAL - BÁSICO</option>
+            <option>INTENSIVO FREE FLIGHT - INGLÊS</option>
+            <option>EU EMPREENDEDOR</option>
+          </select>
+        </div>
+
+
+        <!-- TIPO DE BOLSA — TODOS PRESERVADOS -->
+
+        <div class="field">
+          <label for="tipo">Tipo de Bolsa</label>
+
+          <select
+            id="tipo"
+            onchange="mostrarCursos()"
+            required
+          >
+            <option value="">Selecione o tipo</option>
+
+            <option value="profissionalizante">PROFISSIONALIZANTE</option>
+            <option value="bacharel">BACHARELADO</option>
+            <option value="licenciatura">LICENCIATURA</option>
+            <option value="tecnologo">TECNÓLOGO</option>
+            <option value="tecnico">TÉCNICO</option>
+            <option value="proeja">PROEJA</option>
+          </select>
+        </div>
+
+
+        <!-- SUBCURSO — PREENCHIDO PELO JAVASCRIPT -->
+
+        <div class="field">
+          <label for="subcurso">Formação / curso</label>
+
+          <select
+            id="subcurso"
+            required
+            disabled
+          >
+            <option value="">Primeiro selecione o tipo de bolsa</option>
+          </select>
+        </div>
+
+      </div>
+
+
+      <button class="submit-button" type="submit">
+        🚀 GARANTIR MINHA VAGA AGORA
+      </button>
+
+      <p class="secure">
+        🔒 Seus dados são utilizados para o atendimento desta ação e encaminhamento do cadastro.
+      </p>
+
+    </form>
+
+
+    <!-- =========================
+         COMO FUNCIONA
+    ========================= -->
+
+    <section class="how">
+      <h3>Como funciona?</h3>
+      <p>O cadastro é simples e não garante automaticamente a concessão de uma bolsa.</p>
+
+      <div class="steps">
+
+        <article class="step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>Você se cadastra</strong>
+            <span>Escolha seus dados, modalidade e formação de interesse.</span>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Seu cadastro entra na análise</strong>
+            <span>Os dados são encaminhados para o banco de oportunidades da ação.</span>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>Você pode ser selecionado</strong>
+            <span>Participantes selecionados recebem orientações sobre a oportunidade disponível.</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <strong>ViraChave</strong> • Uma oportunidade pode mudar tudo.<br>
+    A iniciativa é realizada por meio de ações e parcerias institucionais.
+  </footer>
+
+
+  <!-- =========================
+       MODAL
+  ========================= -->
+
+  <div
+    id="modalAviso"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitulo"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-top">
+        <div class="modal-icon">⚠️</div>
+
+        <h2 id="modalTitulo">AVISO IMPORTANTE</h2>
+
+        <p class="modal-intro">
+          Esta é uma <strong>ação de inclusão educacional</strong>,
+          criada para ampliar o acesso à
+          <strong>qualificação profissional e oportunidades reais de formação em cursos</strong>.
+        </p>
+      </div>
+
+
+      <div class="modal-destaque">
+        <p>
+          A iniciativa é
+          <strong>100% gratuita</strong>
+          devido a uma parceria institucional.
+        </p>
+      </div>
+
+
+      <div class="modal-lista">
+        <p>✔ Exclusivo para moradores de Flores da Cunha - RS</p>
+        <p>✔ Instituição educacional com atuação consolidada na região</p>
+        <p>✔ Atendimento direto via WhatsApp</p>
+      </div>
+
+
+      <div class="modal-alerta">
+        <p>💡 Esta oportunidade pode ser encerrada a qualquer momento.</p>
+      </div>
+
+
+      <button
+        class="modal-button"
+        type="button"
+        onclick="fecharModal()"
+      >
+        ENTENDI E QUERO CONTINUAR
+      </button>
+
+    </div>
+  </div>
+
+
+  
+
+
+<script>
+const GOOGLE_SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyq6bfaM7o9OkMGJnnaXO_1gSn90XOb9IQpTuBa0lRxGlf1zxuRN7W5BtoRJjWAt9L/exec";
+
+function enviarCadastroParaPlanilha(dados) {
+  return new Promise((resolve, reject) => {
+    const callbackName = "cadastroCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+
+    const script = document.createElement("script");
+    const params = new URLSearchParams({
+      callback: callbackName,
+      nome: dados.nome,
+      whatsapp: dados.whatsapp,
+      curso: dados.curso,
+      tipo: dados.tipo,
+      subcurso: dados.subcurso
+    });
+
+    let finalizado = false;
+
+    const limpar = () => {
+      finalizado = true;
+      try { delete window[callbackName]; } catch (_) {}
+      script.remove();
+    };
+
+    window[callbackName] = (resposta) => {
+      if (finalizado) return;
+      limpar();
+
+      if (resposta && resposta.sucesso) {
+        resolve(resposta);
+      } else {
+        reject(new Error((resposta && resposta.erro) || "Não foi possível registrar o cadastro."));
+      }
+    };
+
+    script.onerror = () => {
+      if (finalizado) return;
+      limpar();
+      reject(new Error("Não foi possível conectar à planilha."));
+    };
+
+    script.src = GOOGLE_SHEETS_ENDPOINT + "?" + params.toString();
+    document.body.appendChild(script);
+
+    // Evita deixar o usuário preso indefinidamente caso o endpoint não responda.
+    setTimeout(() => {
+      if (finalizado) return;
+      limpar();
+      reject(new Error("A conexão demorou mais que o esperado. Tente novamente."));
+    }, 20000);
+  });
+}
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+  if (!form) return;
+
+  let enviando = false;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    if (enviando) return;
+
+    const getValue = (name) => {
+      const el = form.querySelector(`[name="${name}"]`) || document.getElementById(name);
+      return el ? el.value.trim() : "";
+    };
+
+    const nome = getValue("nome");
+    const whatsapp = getValue("whatsapp");
+    const curso = getValue("curso");
+    const tipo = getValue("tipo");
+    const subcurso = getValue("subcurso");
+
+    if (!nome || !whatsapp || !curso || !tipo || !subcurso) {
+      if (typeof alert === "function") {
+        alert("Por favor, preencha todos os campos do cadastro.");
+      }
+      return;
+    }
+
+    enviando = true;
+
+    const botao = form.querySelector('button[type="submit"], input[type="submit"]');
+    const textoOriginal = botao ? (botao.textContent || botao.value) : "";
+
+    if (botao) {
+      botao.disabled = true;
+      if ("value" in botao) botao.value = "ENVIANDO...";
+      else botao.textContent = "ENVIANDO...";
+    }
+
+    try {
+      await enviarCadastroParaPlanilha({
+        nome,
+        whatsapp,
+        curso,
+        tipo,
+        subcurso
+      });
+
+      form.reset();
+
+      // Reabre/mostra o modal de sucesso caso o projeto já possua um modal.
+      const modalSucesso =
+        document.getElementById("successModal") ||
+        document.getElementById("modalSucesso") ||
+        document.querySelector(".success-modal");
+
+      if (modalSucesso) {
+        modalSucesso.classList.add("active", "show", "open");
+        modalSucesso.style.display = "flex";
+      } else {
+        alert(
+          "🎉 CADASTRO REALIZADO COM SUCESSO!\\n\\n" +
+          "Seu cadastro foi recebido e será analisado pela nossa equipe. " +
+          "Em breve entraremos em contato para dar continuidade ao atendimento e orientar sobre os próximos passos.\\n\\n" +
+          "Fique atento ao WhatsApp informado."
+        );
+      }
+
+    } catch (erro) {
+      alert(
+        "Não foi possível concluir o cadastro neste momento.\\n\\n" +
+        "Verifique sua conexão e tente novamente."
+      );
+      console.error(erro);
+    } finally {
+      enviando = false;
+
+      if (botao) {
+        botao.disabled = false;
+        if ("value" in botao) botao.value = textoOriginal;
+        else botao.textContent = textoOriginal;
+      }
+    }
+  }, true);
+});
+</script>
+
+</body>
+</html>
