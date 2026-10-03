@@ -1213,6 +1213,214 @@
 
 
 <script>
+/* =========================================================
+   FORMAÇÕES / CURSOS POR TIPO DE BOLSA
+   Todas as opções originais foram preservadas.
+========================================================= */
+const cursosPorTipo = {
+  profissionalizante: [
+    "Administração / Técnicas Administrativas",
+    "Administração / Gestão de Pessoas e Lideranças",
+    "Administração / Dicção, Desinibição e Oratória + Comunicação Assertiva",
+    "Administração / Auxiliar Administrativo e Financeiro",
+    "Administração / ASSISTENTE DE MARKETING 7",
+    "Administração / ASSISTENTE DE RH 7",
+    "Administração / ASSISTENTE FINANCEIRO",
+    "Administração / Gestão empresarial e educação financeira",
+    "Administração / Negócios",
+    "Administração / Atendimento ao Público e Vendas",
+    "Administração / Vendas",
+    "Tecnologia / Informática",
+    "Tecnologia / Concerto de Celulares",
+    "Tecnologia / Manutenção de Computadores",
+    "Tecnologia / Designer Gráfico",
+    "Tecnologia / Programação",
+    "Tecnologia / Projetista",
+    "Tecnologia / Marketing Digital",
+    "Tecnologia / Editor de Vídeos",
+    "Tecnologia / Excel",
+    "Tecnologia / Power BI",
+    "Tecnologia / Marketing Digital",
+    "Tecnologia / Social Media",
+    "Tecnologia / E-commerce",
+    "Tecnologia / Fotografia",
+    "Tecnologia / Digital Influencer",
+    "Tecnologia / Canva",
+    "Beleza / Cabeleireiro Profissional",
+    "Beleza / Maquiagem Especilista no Olhar",
+    "Beleza / Designer de Sobrancelhas",
+    "Beleza / Extensão de Cílios",
+    "Beleza / Manicure e Pedicure",
+    "Beleza / Alongamento de Unhas",
+    "Moda / Corte e Costura",
+    "Moda / Modelagem",
+    "Gastronomia / Culinária",
+    "Gastronomia / Confeitaria",
+    "Gastronomia / Biscoitos",
+    "Gastronomia / Pizzaiolo",
+    "Gastronomia / Salgadeiro",
+    "Gastronomia / Panificação",
+    "Gastronomia / Cozinha Funcional",
+    "Gastronomia / Chef Vegano",
+    "Gastronomia / Barman e Bartender",
+    "Saúde / Massagem Profissional",
+    "Saúde / Atendente de Farmácia e Drogaria",
+    "Saúde / Assistente de Laboratório e Análises",
+    "Saúde / Cuidador de Idosos",
+    "Saúde / Saúde Mental e Bem-estar emocional",
+    "Saúde / Biossegurança em Saúde",
+    "Saúde / Primeiros Socorros",
+    "Construção Civil / Eletricista Predial e Residencial",
+    "Construção Civil / Mestre de Obras",
+    "Construção Civil / Instalação e Manutenção de Ar Condicionado",
+    "Construção Civil / NR10",
+    "Construção Civil / NR18",
+    "Construção Civil / Eletricista e Instalador Predial",
+    "Construção Civil / Reciclagem NR 06 e NR 10",
+    "Indústria e Mecânica / Soldador",
+    "Indústria e Mecânica / Leitura e Interpretação de Desenhos - LID",
+    "Idiomas / Inglês",
+    "Idiomas / Italiano",
+    "Idiomas / Libras",
+    "Área de Casa e Conforto / Personal Organizer",
+    "Turismo e Hotelaria / Camareira",
+    "Turismo e Hotelaria / Recepcionista de Hotel",
+    "Turismo e Hotelaria / Decoração de Eventos",
+    "Turismo e Hotelaria / Garçom e Maitre",
+    "Turismo e Hotelaria / Agente de Viagens",
+    "Turismo e Hotelaria / Cerimonialista",
+    "Área de Serviços / Gestor de Posto de Combustível"
+  ],
+  bacharel: [
+    "Administração",
+    "Ciências Contábeis",
+    "Ciências Da Computação",
+    "Ciências Econômicas",
+    "Educação Física - Bacharelado",
+    "Engenharia Ambiental",
+    "Engenharia Civil",
+    "Engenharia De Computação",
+    "Engenharia De Controle E Automação",
+    "Engenharia De Produção",
+    "Engenharia De Software",
+    "Engenharia Elétrica",
+    "Engenharia Mecatrônica",
+    "Engenharia Mecânica",
+    "Sistemas De Informação",
+    "Arquitetura E Urbanismo",
+    "Agronomia"
+  ],
+  licenciatura: [
+    "Artes",
+    "Educação Especial",
+    "Geografia",
+    "História",
+    "Letras - Língua Portuguesa E Libras",
+    "Letras - Português E Inglês",
+    "Matemática",
+    "Pedagogia",
+    "Ciências Biológicas",
+    "Educação Física - Licenciatura"
+  ],
+  tecnologo: [
+    "Análise E Desenvolvimento De Sistemas",
+    "Automação Industrial",
+    "Banco De Dados",
+    "Controle De Obras",
+    "Design Gráfico",
+    "Energias Renováveis",
+    "Estética E Cosmética",
+    "Fabricação Mecânica",
+    "Gastronomia",
+    "Gestão Ambiental",
+    "Gestão Comercial",
+    "Gestão Da Produção Industrial",
+    "Gestão Da Qualidade",
+    "Gestão De Qualidade Na Saúde",
+    "Gestão De Recursos Humanos",
+    "Gestão Financeira",
+    "Gestão Hospitalar",
+    "Logística",
+    "Marketing",
+    "Marketing Digital",
+    "Mecatrônica Industrial",
+    "Processos Escolares",
+    "Processos Gerenciais",
+    "Redes De Computadores",
+    "Segurança No Trabalho",
+    "Segurança No Trânsito",
+    "Serviços Jurídicos"
+  ],
+  tecnico: [
+    "ASB - Auxiliar de Saúde Bucal"
+  ],
+  proeja: [
+    "Ensino Fundamental",
+    "Ensino Médio - 1º, 2º e 3º anos",
+    "Ensino Médio - 2º e 3º anos",
+    "Ensino Médio - 3º ano"
+  ]
+};
+
+function mostrarCursos() {
+  const tipo = document.getElementById("tipo");
+  const subcurso = document.getElementById("subcurso");
+  if (!tipo || !subcurso) return;
+
+  const selecionado = tipo.value;
+  const opcoes = cursosPorTipo[selecionado] || [];
+
+  // Limpa completamente as opções anteriores antes de montar a nova lista.
+  subcurso.innerHTML = "";
+
+  if (!selecionado || opcoes.length === 0) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = selecionado ? "Nenhuma formação disponível" : "Primeiro selecione o tipo de bolsa";
+    subcurso.appendChild(option);
+    subcurso.disabled = true;
+    subcurso.value = "";
+    return;
+  }
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Selecione a formação / curso";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  subcurso.appendChild(placeholder);
+
+  opcoes.forEach((curso) => {
+    const option = document.createElement("option");
+    option.value = curso;
+    option.textContent = curso;
+    subcurso.appendChild(option);
+  });
+
+  // Só libera a formação depois que a lista foi realmente preenchida.
+  subcurso.disabled = false;
+}
+
+// Expõe a função globalmente para compatibilidade com o onchange do HTML.
+window.mostrarCursos = mostrarCursos;
+
+// Também registra o evento diretamente no JavaScript, evitando problemas
+// com o onchange inline em navegadores/GitHub Pages.
+document.addEventListener("DOMContentLoaded", function () {
+  const tipo = document.getElementById("tipo");
+  const subcurso = document.getElementById("subcurso");
+
+  if (!tipo || !subcurso) return;
+
+  tipo.addEventListener("change", mostrarCursos);
+
+  // Se o navegador restaurar uma seleção anterior, monta a lista imediatamente.
+  mostrarCursos();
+});
+
+</script>
+
+<script>
 const GOOGLE_SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyq6bfaM7o9OkMGJnnaXO_1gSn90XOb9IQpTuBa0lRxGlf1zxuRN7W5BtoRJjWAt9L/exec";
 
 function enviarCadastroParaPlanilha(dados) {
