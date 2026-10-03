@@ -1269,7 +1269,26 @@ function enviarCadastroParaPlanilha(dados) {
 
 
 <script>
+// Fecha o aviso inicial e libera a navegação pelo site.
+function fecharModal() {
+  const modal = document.getElementById("modalAviso");
+  if (!modal) return;
+
+  modal.classList.add("hidden");
+  modal.setAttribute("aria-hidden", "true");
+
+  // Garante que o conteúdo da página volte a ficar rolável.
+  document.body.style.overflow = "";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("modalAviso");
+  if (modal) {
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
   const form = document.querySelector("form");
   if (!form) return;
 
