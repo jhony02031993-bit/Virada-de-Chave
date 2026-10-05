@@ -206,6 +206,22 @@
     }
 
     /* =========================
+       CTA PRINCIPAL / CONVERSÃO
+    ========================= */
+    .hero-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 54px; margin-top: 24px; padding: 13px 24px; border-radius: 15px;
+      color: #111; background: linear-gradient(90deg, var(--yellow), #ffb800);
+      box-shadow: 0 13px 30px rgba(255,214,0,.24); text-decoration: none;
+      font-size: 14px; font-weight: 800; transition: .2s ease;
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 17px 36px rgba(255,214,0,.31); }
+    .hero-reassurance { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .hero-reassurance span { padding:7px 10px; border-radius:999px; color:rgba(255,255,255,.92); background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); font-size:10px; font-weight:700; }
+    .free-benefit-callout { margin:17px auto 0; width:min(760px,100%); padding:13px 16px; border-radius:16px; background:rgba(255,214,0,.12); border:1px solid rgba(255,214,0,.3); color:#fff; font-size:11px; line-height:1.5; }
+    .free-benefit-callout strong { color:var(--yellow); }
+
+    /* =========================
        BENEFÍCIOS
     ========================= */
 
@@ -314,6 +330,8 @@
       color: #e10032;
       font-size: inherit;
     }
+
+    .featured-course-note { display:block; margin-top:7px; color:#64748b; font-size:10px; line-height:1.4; font-weight:600; }
 
     .featured-course-badge {
       display: flex;
@@ -626,6 +644,10 @@
       cursor: not-allowed;
     }
 
+    .form-conversion-note { display:grid; gap:3px; margin-top:17px; padding:13px 14px; border-radius:14px; background:#f7f9ff; border:1px solid #e4e9f5; }
+    .form-conversion-note strong { color:var(--navy); font-size:11px; }
+    .form-conversion-note span { color:var(--muted); font-size:10px; line-height:1.45; }
+
     .submit-button {
       width: 100%;
       min-height: 58px;
@@ -910,6 +932,11 @@
         gap: 7px;
       }
 
+      .hero-cta { width:100%; min-height:52px; padding:12px 16px; font-size:12px; }
+      .hero-reassurance { gap:5px; }
+      .hero-reassurance span { font-size:8px; padding:6px 8px; }
+      .free-benefit-callout { font-size:10px; padding:11px 12px; }
+
       .urgencia {
         width: 100%;
         font-size: 10px;
@@ -964,6 +991,8 @@
       .featured-course-copy p {
         font-size: 10px;
       }
+
+      .featured-course-note { font-size:8px; }
 
       .featured-course-badge {
         grid-column: 1 / -1;
@@ -1140,6 +1169,18 @@
         podem ser selecionados para receber <strong>bolsas e formações gratuitas</strong>.
       </p>
 
+      <div class="free-benefit-callout">
+        🎁 <strong>OPORTUNIDADE DE FORMAÇÃO GRATUITA:</strong> você não precisa contratar nada a mais para participar. O cadastro é gratuito e a seleção depende da oportunidade disponível.
+      </div>
+
+      <a class="hero-cta" href="#cadastroForm">🚀 QUERO PARTICIPAR GRATUITAMENTE</a>
+
+      <div class="hero-reassurance" aria-label="Informações do cadastro">
+        <span>✓ Cadastro gratuito</span>
+        <span>✓ Sem contratação extra</span>
+        <span>✓ Cadastro sujeito à análise</span>
+      </div>
+
       <div class="urgencia-wrap">
         <p class="urgencia destaque">⚡ Vagas limitadas • Cadastro com análise imediata</p>
         <p class="urgencia">⏱ Você tem até 48 horas após o cadastro para confirmar sua vaga</p>
@@ -1161,6 +1202,7 @@
         <strong>🎓 Cursos Gratuitos</strong>
         <span>Diversas áreas e modalidades.</span>
         <p>Você pode receber uma formação gratuita. <strong>Não precisa contratar nada a mais para participar.</strong></p>
+        <small class="featured-course-note">Cadastro gratuito • participação mediante seleção e disponibilidade da oportunidade.</small>
       </div>
 
       <div class="featured-course-badge">
@@ -1407,6 +1449,11 @@
 
       </div>
 
+
+      <div class="form-conversion-note">
+        <strong>🎁 Por que vale a pena se cadastrar?</strong>
+        <span>Você entra no banco de oportunidades e pode ser selecionado para formações e bolsas disponíveis, sem precisar contratar nada a mais para participar.</span>
+      </div>
 
       <button class="submit-button" type="submit">
         🚀 GARANTIR MINHA VAGA AGORA
