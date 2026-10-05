@@ -253,6 +253,202 @@
     }
 
     /* =========================
+       DESTAQUE — CURSOS GRATUITOS
+    ========================= */
+
+    .benefit.featured-course {
+      grid-column: 1 / -1;
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 24px;
+      text-align: left;
+      border: 2px solid var(--yellow);
+      background: linear-gradient(135deg, #fff 0%, #fffdf3 55%, #fff8d8 100%);
+      box-shadow: 0 18px 50px rgba(7,26,61,.13);
+      overflow: hidden;
+    }
+
+    .benefit.featured-course::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 7px;
+      background: linear-gradient(180deg, var(--yellow), var(--orange));
+    }
+
+    .featured-course .benefit-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffd600, #ffb300);
+      box-shadow: 0 9px 22px rgba(255,174,0,.24);
+      font-size: 29px;
+    }
+
+    .featured-course-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--navy);
+      font-size: clamp(16px, 2vw, 21px);
+      font-weight: 800;
+    }
+
+    .featured-course-copy span {
+      font-size: 11px;
+    }
+
+    .featured-course-copy p {
+      margin: 5px 0 0;
+      color: var(--navy);
+      font-size: clamp(12px, 1.8vw, 14px);
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .featured-course-copy p strong {
+      display: inline;
+      color: #e10032;
+      font-size: inherit;
+    }
+
+    .featured-course-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 7px;
+      min-width: 190px;
+    }
+
+    .free-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #126b4e;
+      background: #e7f8ef;
+      border: 1px solid #bfe9d3;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .no-extra-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #161616;
+      background: var(--yellow);
+      border: 1px solid #f0c900;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       MODALIDADES DE FORMAÇÃO
+    ========================= */
+
+    .formations {
+      margin: 22px 0 18px;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.98);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 45px rgba(7,26,61,.08);
+    }
+
+    .formations-head {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .formations-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--purple);
+      background: #f0ebff;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    .formations-head h2 {
+      margin: 9px 0 5px;
+      color: var(--text);
+      font-size: clamp(19px, 3vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -.5px;
+    }
+
+    .formations-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .formations-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 9px;
+    }
+
+    .formation-card {
+      padding: 14px 9px;
+      border-radius: 16px;
+      text-align: center;
+      background: #f9fbff;
+      border: 1px solid #e8edf6;
+      transition: .2s ease;
+    }
+
+    .formation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(7,26,61,.08);
+      background: #fff;
+    }
+
+    .formation-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 8px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 18px;
+      background: #eeeaff;
+    }
+
+    .formation-card:nth-child(2) .formation-icon { background: #e9f2ff; }
+    .formation-card:nth-child(3) .formation-icon { background: #f0eaff; }
+    .formation-card:nth-child(4) .formation-icon { background: #e8f9ed; }
+    .formation-card:nth-child(5) .formation-icon { background: #fff4cf; }
+
+    .formation-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .formation-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 8px;
+      line-height: 1.35;
+    }
+
+    /* =========================
        CONTAINER / FORM
     ========================= */
 
@@ -686,6 +882,12 @@
       }
     }
 
+    @media (max-width: 980px) {
+      .formations-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     @media (max-width: 640px) {
       .hero {
         padding: 22px 15px 90px;
@@ -738,6 +940,66 @@
 
       .benefit span {
         font-size: 9px;
+      }
+
+      .benefit.featured-course {
+        grid-column: 1 / -1;
+        grid-template-columns: auto 1fr;
+        gap: 12px;
+        padding: 15px 13px;
+        text-align: left;
+      }
+
+      .featured-course .benefit-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 13px;
+        font-size: 21px;
+      }
+
+      .featured-course-copy strong {
+        font-size: 13px;
+      }
+
+      .featured-course-copy p {
+        font-size: 10px;
+      }
+
+      .featured-course-badge {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        min-width: 0;
+      }
+
+      .free-badge,
+      .no-extra-badge {
+        font-size: 8px;
+        padding: 7px 9px;
+      }
+
+      .formations {
+        padding: 17px 12px;
+        border-radius: 20px;
+      }
+
+      .formations-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .formation-card {
+        padding: 13px 7px;
+      }
+
+      .formation-card strong {
+        font-size: 9px;
+      }
+
+      .formation-card span {
+        font-size: 7px;
       }
 
       .container {
@@ -892,10 +1154,19 @@
   ========================= -->
 
   <section class="benefits" aria-label="Benefícios">
-    <article class="benefit">
-      <div class="benefit-icon">🎓</div>
-      <strong>Cursos Gratuitos</strong>
-      <span>Diversas áreas e modalidades.</span>
+    <article class="benefit featured-course">
+      <div class="benefit-icon">🎁</div>
+
+      <div class="featured-course-copy">
+        <strong>🎓 Cursos Gratuitos</strong>
+        <span>Diversas áreas e modalidades.</span>
+        <p>Você pode receber uma formação gratuita. <strong>Não precisa contratar nada a mais para participar.</strong></p>
+      </div>
+
+      <div class="featured-course-badge">
+        <span class="free-badge">✓ CADASTRO GRATUITO</span>
+        <span class="no-extra-badge">✓ SEM CONTRATAÇÃO EXTRA</span>
+      </div>
     </article>
 
     <article class="benefit">
@@ -923,6 +1194,51 @@
   ========================= -->
 
   <main class="container">
+
+    <!-- =========================
+         MODALIDADES DE FORMAÇÃO
+    ========================= -->
+
+    <section class="formations" aria-label="Modalidades de formação">
+      <div class="formations-head">
+        <span class="formations-badge">🎓 Nossas formações</span>
+        <h2>Escolha a formação ideal para você</h2>
+        <p>Confira as principais modalidades disponíveis na ação.</p>
+      </div>
+
+      <div class="formations-grid">
+        <article class="formation-card">
+          <div class="formation-icon">🎓</div>
+          <strong>Cursos Profissionalizantes</strong>
+          <span>Preparação para o mercado de trabalho.</span>
+        </article>
+
+        <article class="formation-card">
+          <div class="formation-icon">🏛️</div>
+          <strong>Faculdade</strong>
+          <span>Graduação e formação acadêmica.</span>
+        </article>
+
+        <article class="formation-card">
+          <div class="formation-icon">🚀</div>
+          <strong>Superior em Tecnologia</strong>
+          <span>Tecnologia, inovação e carreira.</span>
+        </article>
+
+        <article class="formation-card">
+          <div class="formation-icon">🛠️</div>
+          <strong>Técnicos</strong>
+          <span>Formação técnica e profissional.</span>
+        </article>
+
+        <article class="formation-card">
+          <div class="formation-icon">📚</div>
+          <strong>PROEJA</strong>
+          <span>Ensino Médio + qualificação profissional.</span>
+        </article>
+      </div>
+    </section>
+
 
     <section class="info-box">
       <h2 class="info-title">Por que participar?</h2>
@@ -1066,7 +1382,7 @@
             <option value="">Selecione o tipo</option>
 
             <option value="profissionalizante">PROFISSIONALIZANTE</option>
-            <option value="bacharel">BACHARELADO</option>
+            <option value="faculdade">FACULDADE</option>
             <option value="licenciatura">LICENCIATURA</option>
             <option value="tecnologo">TECNÓLOGO</option>
             <option value="tecnico">TÉCNICO</option>
@@ -1291,12 +1607,12 @@ const cursosPorTipo = {
     "Turismo e Hotelaria / Cerimonialista",
     "Área de Serviços / Gestor de Posto de Combustível"
   ],
-  bacharel: [
+  faculdade: [
     "Administração",
     "Ciências Contábeis",
     "Ciências Da Computação",
     "Ciências Econômicas",
-    "Educação Física - Bacharelado",
+    "Educação Física - Faculdade",
     "Engenharia Ambiental",
     "Engenharia Civil",
     "Engenharia De Computação",
